@@ -1,40 +1,44 @@
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+//let Schema = mongoose.Schema;
 let Schema = mongoose.Schema;
 
-let empleadoSchema = new Schema({​​
-       id_usuario:{
-       type:Schema.type.ObjectId,
-       ref:'Usuario',
-       require:true,
-   },
-   id_departametos:{
-       type:Schema.type.ObjectId,
-       ref:'Departamento',
-       require:true,
-   },
-   nombre_del_puesto:{
-    type:String,
-    require:[true,'el nombre es nesesario'],
-   },
-   anios_servico:{
-    type: Number,
-    require:[true,'campo olbigatorio'],
-},
-hora_entrada:{
- type:Number,
- require:[true,'es nesesaria la hora de entrada'],
-},
-hora_salida:{
- type:Number,
- require:[true,'es neseraia la hora de salida'],
-},
-activo:{
- type:Boolean,
- default:true 
-}
-}​​);
+
+    let empleadoSchema = new Schema({
+        id_usuarios:{
+            type:Schema.Types.ObjectId,
+            ref: 'Usuario',
+            require:true,
+        },
+        id_departamento :{
+            type:Schema.Types.ObjectId,
+            ref:'Departamento',
+            require:true,
+        },
+        nombre_del_puesto:{
+            type: String,
+            require: [true,'el nombre es necesario'],
+            unique: true
+        },
+         anios_servicio:{
+             type: Number,
+             require: [true, 'este campo es necesario'],
+         },
+         hora_entrada:{
+             type: Number,
+             require: [true, 'lahora es necesaria'],
+         },
+         hora_salida:{
+             type:Number,
+             require: [true,'la hora es necesaria'],
+         },
+         activo:{
+             type: Boolean,
+             default:true
+         }
+    
+    });
 
 
-
-module.exports = mongoose.model('Empleado', empreadoSchema);
+module.exports = mongoose.model('Empleado', empleadoSchema);
