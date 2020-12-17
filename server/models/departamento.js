@@ -35,7 +35,7 @@ let departamentoSchema = new Schema({​​
 
     extencion_telefonica:{​​
 
-        type:Number
+        type:Number,
         unique: true 
 
     }​​,
